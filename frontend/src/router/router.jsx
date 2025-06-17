@@ -1,14 +1,14 @@
 // React
-import React from "react";
+import React, { Suspense, lazy } from "react";
 
 // React Router
 import { createBrowserRouter } from "react-router";
 
 // Pages
-import Login from "../pages/login/login";
-import Todo from "../pages/todo/todo";
-import Image from "../pages/image/image";
-import Layout from "../layouts/Layout";
+const Login = lazy(() => import("../pages/login/login"));
+const Todo = lazy(() => import("../pages/todo/todo"));
+const Image = lazy(() => import("../pages/image/image"));
+const Layout = lazy(() => import("../layouts/Layout"));
 
 const links = [
   { url: "/todo", label: "Todo" },
@@ -20,14 +20,36 @@ const links = [
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />
+    element: (
+      <Suspense fallback={<div>cargando...</div>}>
+        <Login />
+      </Suspense>
+    )
   },
   {
     path: "/",
-    element: <Layout links={links} />,
+    element: (
+      <Suspense fallback={<div>cargando...</div>}>
+        <Layout links={links} />
+      </Suspense>
+    ),
     children: [
-      { path: "todo", element: <Todo /> },
-      { path: "image", element: <Image /> }
+      {
+        path: "todo",
+        element: (
+          <Suspense fallback={<div>cargando...</div>}>
+            <Todo />
+          </Suspense>
+        )
+      },
+      {
+        path: "image",
+        element: (
+          <Suspense fallback={<div>cargando...</div>}>
+            <Image />
+          </Suspense>
+        )
+      }
     ]
   }
 ]);

@@ -5,8 +5,15 @@
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __esm = (fn, res) => function __init() {
+    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+  };
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  };
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
@@ -6210,7 +6217,7 @@
         function mountLayoutEffect(create, deps) {
           var fiberFlags = 4194308;
           (currentlyRenderingFiber.mode & StrictEffectsMode) !== NoMode && (fiberFlags |= 134217728);
-          return mountEffectImpl(fiberFlags, Layout2, create, deps);
+          return mountEffectImpl(fiberFlags, Layout3, create, deps);
         }
         function imperativeHandleEffect(create, ref) {
           if ("function" === typeof ref) {
@@ -6238,7 +6245,7 @@
           (currentlyRenderingFiber.mode & StrictEffectsMode) !== NoMode && (fiberFlags |= 134217728);
           mountEffectImpl(
             fiberFlags,
-            Layout2,
+            Layout3,
             imperativeHandleEffect.bind(null, create, ref),
             deps
           );
@@ -6251,7 +6258,7 @@
           deps = null !== deps && void 0 !== deps ? deps.concat([ref]) : null;
           updateEffectImpl(
             4,
-            Layout2,
+            Layout3,
             imperativeHandleEffect.bind(null, create, ref),
             deps
           );
@@ -9681,15 +9688,15 @@
               do {
                 if ((updateQueue.tag & flags) === flags && ((flags & Passive) !== NoFlags ? null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentPassiveEffectMountStarted && injectedProfilingHooks.markComponentPassiveEffectMountStarted(
                   finishedWork
-                ) : (flags & Layout2) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectMountStarted && injectedProfilingHooks.markComponentLayoutEffectMountStarted(
+                ) : (flags & Layout3) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectMountStarted && injectedProfilingHooks.markComponentLayoutEffectMountStarted(
                   finishedWork
                 ), lastEffect = void 0, (flags & Insertion) !== NoFlags && (isRunningInsertionEffect = true), lastEffect = runWithFiberInDEV(
                   finishedWork,
                   callCreateInDEV,
                   updateQueue
-                ), (flags & Insertion) !== NoFlags && (isRunningInsertionEffect = false), (flags & Passive) !== NoFlags ? null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentPassiveEffectMountStopped && injectedProfilingHooks.markComponentPassiveEffectMountStopped() : (flags & Layout2) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectMountStopped && injectedProfilingHooks.markComponentLayoutEffectMountStopped(), void 0 !== lastEffect && "function" !== typeof lastEffect)) {
+                ), (flags & Insertion) !== NoFlags && (isRunningInsertionEffect = false), (flags & Passive) !== NoFlags ? null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentPassiveEffectMountStopped && injectedProfilingHooks.markComponentPassiveEffectMountStopped() : (flags & Layout3) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectMountStopped && injectedProfilingHooks.markComponentLayoutEffectMountStopped(), void 0 !== lastEffect && "function" !== typeof lastEffect)) {
                   var hookName = void 0;
-                  hookName = 0 !== (updateQueue.tag & Layout2) ? "useLayoutEffect" : 0 !== (updateQueue.tag & Insertion) ? "useInsertionEffect" : "useEffect";
+                  hookName = 0 !== (updateQueue.tag & Layout3) ? "useLayoutEffect" : 0 !== (updateQueue.tag & Insertion) ? "useInsertionEffect" : "useEffect";
                   var addendum = void 0;
                   addendum = null === lastEffect ? " You returned null. If your effect does not require clean up, return undefined (or nothing)." : "function" === typeof lastEffect.then ? "\n\nIt looks like you wrote " + hookName + "(async () => ...) or returned a Promise. Instead, write the async function inside your effect and call it immediately:\n\n" + hookName + "(() => {\n  async function fetchData() {\n    // You can await here\n    const response = await MyAPI.getData(someId);\n    // ...\n  }\n  fetchData();\n}, [someId]); // Or [] if effect doesn't need props or state\n\nLearn more about data fetching with Hooks: https://react.dev/link/hooks-data-fetching" : " You returned: " + lastEffect;
                   runWithFiberInDEV(
@@ -9723,7 +9730,7 @@
                   var inst = updateQueue.inst, destroy = inst.destroy;
                   void 0 !== destroy && (inst.destroy = void 0, (flags & Passive) !== NoFlags ? null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStarted && injectedProfilingHooks.markComponentPassiveEffectUnmountStarted(
                     finishedWork
-                  ) : (flags & Layout2) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStarted && injectedProfilingHooks.markComponentLayoutEffectUnmountStarted(
+                  ) : (flags & Layout3) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStarted && injectedProfilingHooks.markComponentLayoutEffectUnmountStarted(
                     finishedWork
                   ), (flags & Insertion) !== NoFlags && (isRunningInsertionEffect = true), lastEffect = finishedWork, runWithFiberInDEV(
                     lastEffect,
@@ -9731,7 +9738,7 @@
                     lastEffect,
                     nearestMountedAncestor,
                     destroy
-                  ), (flags & Insertion) !== NoFlags && (isRunningInsertionEffect = false), (flags & Passive) !== NoFlags ? null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStopped && injectedProfilingHooks.markComponentPassiveEffectUnmountStopped() : (flags & Layout2) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStopped && injectedProfilingHooks.markComponentLayoutEffectUnmountStopped());
+                  ), (flags & Insertion) !== NoFlags && (isRunningInsertionEffect = false), (flags & Passive) !== NoFlags ? null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentPassiveEffectUnmountStopped && injectedProfilingHooks.markComponentPassiveEffectUnmountStopped() : (flags & Layout3) !== NoFlags && null !== injectedProfilingHooks && "function" === typeof injectedProfilingHooks.markComponentLayoutEffectUnmountStopped && injectedProfilingHooks.markComponentLayoutEffectUnmountStopped());
                 }
                 updateQueue = updateQueue.next;
               } while (updateQueue !== firstEffect);
@@ -10180,7 +10187,7 @@
             case 11:
             case 15:
               recursivelyTraverseLayoutEffects(finishedRoot, finishedWork);
-              flags & 4 && commitHookLayoutEffects(finishedWork, Layout2 | HasEffect);
+              flags & 4 && commitHookLayoutEffects(finishedWork, Layout3 | HasEffect);
               break;
             case 1:
               recursivelyTraverseLayoutEffects(finishedRoot, finishedWork);
@@ -10460,7 +10467,7 @@
               offscreenSubtreeWasHidden || commitHookLayoutUnmountEffects(
                 deletedFiber,
                 nearestMountedAncestor,
-                Layout2
+                Layout3
               );
               recursivelyTraverseDeletionEffects(
                 finishedRoot,
@@ -10606,7 +10613,7 @@
               ), commitHookEffectListMount(Insertion | HasEffect, finishedWork), commitHookLayoutUnmountEffects(
                 finishedWork,
                 finishedWork.return,
-                Layout2 | HasEffect
+                Layout3 | HasEffect
               ));
               break;
             case 1:
@@ -10916,7 +10923,7 @@
               commitHookLayoutUnmountEffects(
                 finishedWork,
                 finishedWork.return,
-                Layout2
+                Layout3
               );
               recursivelyTraverseDisappearLayoutEffects(finishedWork);
               break;
@@ -10966,7 +10973,7 @@
                 finishedWork,
                 includeWorkInProgressEffects
               );
-              commitHookLayoutEffects(finishedWork, Layout2);
+              commitHookLayoutEffects(finishedWork, Layout3);
               break;
             case 1:
               recursivelyTraverseReappearLayoutEffects(
@@ -17656,7 +17663,7 @@
               'Internal React error: A listener was unexpectedly attached to a "noop" thenable. This is a bug in React. Please file an issue.'
             );
           }
-        }, suspendedThenable = null, needsToResetSuspendedThenableDEV = false, NoFlags = 0, HasEffect = 1, Insertion = 2, Layout2 = 4, Passive = 8, UpdateState = 0, ReplaceState = 1, ForceUpdate = 2, CaptureUpdate = 3, hasForceUpdate = false;
+        }, suspendedThenable = null, needsToResetSuspendedThenableDEV = false, NoFlags = 0, HasEffect = 1, Insertion = 2, Layout3 = 4, Passive = 8, UpdateState = 0, ReplaceState = 1, ForceUpdate = 2, CaptureUpdate = 3, hasForceUpdate = false;
         var didWarnUpdateInsideUpdate = false;
         var currentlyProcessingQueue = null;
         var didReadFromEntangledAsyncAction = false, currentTreeHiddenStackCursor = createCursor(null), prevEntangledRenderLanesCursor = createCursor(0), didWarnUncachedGetSnapshot;
@@ -17978,7 +17985,7 @@
           useLayoutEffect: function(create, deps) {
             currentHookNameInDev = "useLayoutEffect";
             updateHookTypesDev();
-            return updateEffectImpl(4, Layout2, create, deps);
+            return updateEffectImpl(4, Layout3, create, deps);
           },
           useMemo: function(create, deps) {
             currentHookNameInDev = "useMemo";
@@ -18103,7 +18110,7 @@
           useLayoutEffect: function(create, deps) {
             currentHookNameInDev = "useLayoutEffect";
             updateHookTypesDev();
-            return updateEffectImpl(4, Layout2, create, deps);
+            return updateEffectImpl(4, Layout3, create, deps);
           },
           useMemo: function(create, deps) {
             currentHookNameInDev = "useMemo";
@@ -18387,7 +18394,7 @@
             currentHookNameInDev = "useLayoutEffect";
             warnInvalidHookAccess();
             updateHookTypesDev();
-            return updateEffectImpl(4, Layout2, create, deps);
+            return updateEffectImpl(4, Layout3, create, deps);
           },
           useMemo: function(create, deps) {
             currentHookNameInDev = "useMemo";
@@ -18536,7 +18543,7 @@
             currentHookNameInDev = "useLayoutEffect";
             warnInvalidHookAccess();
             updateHookTypesDev();
-            return updateEffectImpl(4, Layout2, create, deps);
+            return updateEffectImpl(4, Layout3, create, deps);
           },
           useMemo: function(create, deps) {
             currentHookNameInDev = "useMemo";
@@ -18713,9 +18720,9 @@
             }
           }
         }, callDestroyInDEV = callDestroy["react-stack-bottom-frame"].bind(callDestroy), callLazyInit = {
-          "react-stack-bottom-frame": function(lazy) {
-            var init = lazy._init;
-            return init(lazy._payload);
+          "react-stack-bottom-frame": function(lazy2) {
+            var init = lazy2._init;
+            return init(lazy2._payload);
           }
         }, callLazyInitInDEV = callLazyInit["react-stack-bottom-frame"].bind(callLazyInit), thenableState = null, thenableIndexCounter = 0, currentDebugInfo = null, didWarnAboutMaps;
         var didWarnAboutGenerators = didWarnAboutMaps = false;
@@ -19459,33 +19466,7 @@
     }
   });
 
-  // main.jsx
-  var import_react10 = __toESM(require_react());
-  var import_client = __toESM(require_client());
-
   // node_modules/react-router/dist/development/chunk-NL6KNZEE.mjs
-  var React3 = __toESM(require_react(), 1);
-  var React = __toESM(require_react(), 1);
-  var React2 = __toESM(require_react(), 1);
-  var React10 = __toESM(require_react(), 1);
-  var React9 = __toESM(require_react(), 1);
-  var React4 = __toESM(require_react(), 1);
-  var React8 = __toESM(require_react(), 1);
-  var React7 = __toESM(require_react(), 1);
-  var React5 = __toESM(require_react(), 1);
-  var React6 = __toESM(require_react(), 1);
-  var React11 = __toESM(require_react(), 1);
-  var React12 = __toESM(require_react(), 1);
-  var React13 = __toESM(require_react(), 1);
-  var import_cookie = __toESM(require_dist(), 1);
-  var import_meta = {};
-  var __typeError = (msg) => {
-    throw TypeError(msg);
-  };
-  var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
-  var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
-  var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-  var PopStateEventType = "popstate";
   function createBrowserHistory(options = {}) {
     function createBrowserLocation(window2, globalHistory) {
       let { pathname, search, hash } = window2.location;
@@ -19684,52 +19665,11 @@
     }
     return new URL(href2, base);
   }
-  var _map;
-  var unstable_RouterContextProvider = class {
-    constructor(init) {
-      __privateAdd(this, _map, /* @__PURE__ */ new Map());
-      if (init) {
-        for (let [context, value] of init) {
-          this.set(context, value);
-        }
-      }
-    }
-    get(context) {
-      if (__privateGet(this, _map).has(context)) {
-        return __privateGet(this, _map).get(context);
-      }
-      if (context.defaultValue !== void 0) {
-        return context.defaultValue;
-      }
-      throw new Error("No value found for context");
-    }
-    set(context, value) {
-      __privateGet(this, _map).set(context, value);
-    }
-  };
-  _map = /* @__PURE__ */ new WeakMap();
-  var unsupportedLazyRouteObjectKeys = /* @__PURE__ */ new Set([
-    "lazy",
-    "caseSensitive",
-    "path",
-    "id",
-    "index",
-    "children"
-  ]);
   function isUnsupportedLazyRouteObjectKey(key) {
     return unsupportedLazyRouteObjectKeys.has(
       key
     );
   }
-  var unsupportedLazyRouteFunctionKeys = /* @__PURE__ */ new Set([
-    "lazy",
-    "caseSensitive",
-    "path",
-    "id",
-    "index",
-    "unstable_middleware",
-    "children"
-  ]);
   function isUnsupportedLazyRouteFunctionKey(key) {
     return unsupportedLazyRouteFunctionKeys.has(
       key
@@ -19887,13 +19827,6 @@
       )
     );
   }
-  var paramRe = /^:[\w-]+$/;
-  var dynamicSegmentValue = 3;
-  var indexRouteValue = 2;
-  var emptySegmentValue = 1;
-  var staticSegmentValue = 10;
-  var splatPenalty = -2;
-  var isSplat = (s) => s === "*";
   function computeScore(path, index) {
     let segments = path.split("/");
     let initialScore = segments.length;
@@ -20135,74 +20068,9 @@
     }
     return path;
   }
-  var joinPaths = (paths) => paths.join("/").replace(/\/\/+/g, "/");
-  var normalizePathname = (pathname) => pathname.replace(/\/+$/, "").replace(/^\/*/, "/");
-  var normalizeSearch = (search) => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search;
-  var normalizeHash = (hash) => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash;
-  var ErrorResponseImpl = class {
-    constructor(status, statusText, data2, internal = false) {
-      this.status = status;
-      this.statusText = statusText || "";
-      this.internal = internal;
-      if (data2 instanceof Error) {
-        this.data = data2.toString();
-        this.error = data2;
-      } else {
-        this.data = data2;
-      }
-    }
-  };
   function isRouteErrorResponse(error) {
     return error != null && typeof error.status === "number" && typeof error.statusText === "string" && typeof error.internal === "boolean" && "data" in error;
   }
-  var validMutationMethodsArr = [
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE"
-  ];
-  var validMutationMethods = new Set(
-    validMutationMethodsArr
-  );
-  var validRequestMethodsArr = [
-    "GET",
-    ...validMutationMethodsArr
-  ];
-  var validRequestMethods = new Set(validRequestMethodsArr);
-  var redirectStatusCodes = /* @__PURE__ */ new Set([301, 302, 303, 307, 308]);
-  var redirectPreserveMethodStatusCodes = /* @__PURE__ */ new Set([307, 308]);
-  var IDLE_NAVIGATION = {
-    state: "idle",
-    location: void 0,
-    formMethod: void 0,
-    formAction: void 0,
-    formEncType: void 0,
-    formData: void 0,
-    json: void 0,
-    text: void 0
-  };
-  var IDLE_FETCHER = {
-    state: "idle",
-    data: void 0,
-    formMethod: void 0,
-    formAction: void 0,
-    formEncType: void 0,
-    formData: void 0,
-    json: void 0,
-    text: void 0
-  };
-  var IDLE_BLOCKER = {
-    state: "unblocked",
-    proceed: void 0,
-    reset: void 0,
-    location: void 0
-  };
-  var ABSOLUTE_URL_REGEX = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
-  var defaultMapRouteProperties = (route) => ({
-    hasErrorBoundary: Boolean(route.hasErrorBoundary)
-  });
-  var TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
-  var ResetLoaderDataSymbol = Symbol("ResetLoaderData");
   function createRouter(init) {
     const routerWindow = init.window ? init.window : typeof window !== "undefined" ? window : void 0;
     const isBrowser2 = typeof routerWindow !== "undefined" && typeof routerWindow.document !== "undefined" && typeof routerWindow.document.createElement !== "undefined";
@@ -22337,64 +22205,6 @@
       (aChild, i) => existingRoute.children?.some((bChild) => isSameRoute(aChild, bChild))
     );
   }
-  var lazyRoutePropertyCache = /* @__PURE__ */ new WeakMap();
-  var loadLazyRouteProperty = ({
-    key,
-    route,
-    manifest,
-    mapRouteProperties: mapRouteProperties2
-  }) => {
-    let routeToUpdate = manifest[route.id];
-    invariant(routeToUpdate, "No route found in manifest");
-    if (!routeToUpdate.lazy || typeof routeToUpdate.lazy !== "object") {
-      return;
-    }
-    let lazyFn = routeToUpdate.lazy[key];
-    if (!lazyFn) {
-      return;
-    }
-    let cache = lazyRoutePropertyCache.get(routeToUpdate);
-    if (!cache) {
-      cache = {};
-      lazyRoutePropertyCache.set(routeToUpdate, cache);
-    }
-    let cachedPromise = cache[key];
-    if (cachedPromise) {
-      return cachedPromise;
-    }
-    let propertyPromise = (async () => {
-      let isUnsupported = isUnsupportedLazyRouteObjectKey(key);
-      let staticRouteValue = routeToUpdate[key];
-      let isStaticallyDefined = staticRouteValue !== void 0 && key !== "hasErrorBoundary";
-      if (isUnsupported) {
-        warning(
-          !isUnsupported,
-          "Route property " + key + " is not a supported lazy route property. This property will be ignored."
-        );
-        cache[key] = Promise.resolve();
-      } else if (isStaticallyDefined) {
-        warning(
-          false,
-          `Route "${routeToUpdate.id}" has a static property "${key}" defined. The lazy property will be ignored.`
-        );
-      } else {
-        let value = await lazyFn();
-        if (value != null) {
-          Object.assign(routeToUpdate, { [key]: value });
-          Object.assign(routeToUpdate, mapRouteProperties2(routeToUpdate));
-        }
-      }
-      if (typeof routeToUpdate.lazy === "object") {
-        routeToUpdate.lazy[key] = void 0;
-        if (Object.values(routeToUpdate.lazy).every((value) => value === void 0)) {
-          routeToUpdate.lazy = void 0;
-        }
-      }
-    })();
-    cache[key] = propertyPromise;
-    return propertyPromise;
-  };
-  var lazyRouteFunctionCache = /* @__PURE__ */ new WeakMap();
   function loadLazyRoute(route, type, manifest, mapRouteProperties2, lazyRoutePropertiesToSkip) {
     let routeToUpdate = manifest[route.id];
     invariant(routeToUpdate, "No route found in manifest");
@@ -23405,37 +23215,6 @@
       reject
     };
   }
-  var DataRouterContext = React.createContext(null);
-  DataRouterContext.displayName = "DataRouter";
-  var DataRouterStateContext = React.createContext(null);
-  DataRouterStateContext.displayName = "DataRouterState";
-  var ViewTransitionContext = React.createContext({
-    isTransitioning: false
-  });
-  ViewTransitionContext.displayName = "ViewTransition";
-  var FetchersContext = React.createContext(
-    /* @__PURE__ */ new Map()
-  );
-  FetchersContext.displayName = "Fetchers";
-  var AwaitContext = React.createContext(null);
-  AwaitContext.displayName = "Await";
-  var NavigationContext = React.createContext(
-    null
-  );
-  NavigationContext.displayName = "Navigation";
-  var LocationContext = React.createContext(
-    null
-  );
-  LocationContext.displayName = "Location";
-  var RouteContext = React.createContext({
-    outlet: null,
-    matches: [],
-    isDataRoute: false
-  });
-  RouteContext.displayName = "Route";
-  var RouteErrorContext = React.createContext(null);
-  RouteErrorContext.displayName = "RouteError";
-  var ENABLE_DEV_WARNINGS = true;
   function useHref(to, { relative } = {}) {
     invariant(
       useInRouterContext(),
@@ -23463,7 +23242,6 @@
     );
     return React2.useContext(LocationContext).location;
   }
-  var navigateEffectWarning = `You should call navigate() in a React.useEffect(), not when your component is first rendered.`;
   function useIsomorphicLayoutEffect(cb) {
     let isStatic = React2.useContext(NavigationContext).static;
     if (!isStatic) {
@@ -23523,7 +23301,6 @@
     );
     return navigate;
   }
-  var OutletContext = React2.createContext(null);
   function useOutlet(context) {
     let outlet = React2.useContext(RouteContext).outlet;
     if (outlet) {
@@ -23658,50 +23435,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return /* @__PURE__ */ React2.createElement(React2.Fragment, null, /* @__PURE__ */ React2.createElement("h2", null, "Unexpected Application Error!"), /* @__PURE__ */ React2.createElement("h3", { style: { fontStyle: "italic" } }, message), stack ? /* @__PURE__ */ React2.createElement("pre", { style: preStyles }, stack) : null, devInfo);
   }
-  var defaultErrorElement = /* @__PURE__ */ React2.createElement(DefaultErrorComponent, null);
-  var RenderErrorBoundary = class extends React2.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        location: props.location,
-        revalidation: props.revalidation,
-        error: props.error
-      };
-    }
-    static getDerivedStateFromError(error) {
-      return { error };
-    }
-    static getDerivedStateFromProps(props, state) {
-      if (state.location !== props.location || state.revalidation !== "idle" && props.revalidation === "idle") {
-        return {
-          error: props.error,
-          location: props.location,
-          revalidation: props.revalidation
-        };
-      }
-      return {
-        error: props.error !== void 0 ? props.error : state.error,
-        location: state.location,
-        revalidation: props.revalidation || state.revalidation
-      };
-    }
-    componentDidCatch(error, errorInfo) {
-      console.error(
-        "React Router caught the following error during render",
-        error,
-        errorInfo
-      );
-    }
-    render() {
-      return this.state.error !== void 0 ? /* @__PURE__ */ React2.createElement(RouteContext.Provider, { value: this.props.routeContext }, /* @__PURE__ */ React2.createElement(
-        RouteErrorContext.Provider,
-        {
-          value: this.state.error,
-          children: this.props.component
-        }
-      )) : this.props.children;
-    }
-  };
   function RenderedRoute({ routeContext, match, children }) {
     let dataRouterContext = React2.useContext(DataRouterContext);
     if (dataRouterContext && dataRouterContext.static && dataRouterContext.staticContext && (match.route.errorElement || match.route.ErrorBoundary)) {
@@ -23917,14 +23650,12 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     );
     return navigate;
   }
-  var alreadyWarned = {};
   function warningOnce(key, cond, message) {
     if (!cond && !alreadyWarned[key]) {
       alreadyWarned[key] = true;
       warning(false, message);
     }
   }
-  var alreadyWarned2 = {};
   function warnOnce(condition, message) {
     if (!condition && !alreadyWarned2[message]) {
       alreadyWarned2[message] = true;
@@ -23981,29 +23712,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return updates;
   }
-  var hydrationRouteProperties = [
-    "HydrateFallback",
-    "hydrateFallbackElement"
-  ];
-  var Deferred = class {
-    constructor() {
-      this.status = "pending";
-      this.promise = new Promise((resolve, reject) => {
-        this.resolve = (value) => {
-          if (this.status === "pending") {
-            this.status = "resolved";
-            resolve(value);
-          }
-        };
-        this.reject = (reason) => {
-          if (this.status === "pending") {
-            this.status = "rejected";
-            reject(reason);
-          }
-        };
-      });
-    }
-  };
   function RouterProvider({
     router: router2,
     flushSync: reactDomFlushSyncImpl
@@ -24173,7 +23881,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       )
     ))))), null);
   }
-  var MemoizedDataRoutes = React3.memo(DataRoutes);
   function DataRoutes({
     routes,
     future,
@@ -24241,8 +23948,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return /* @__PURE__ */ React3.createElement(NavigationContext.Provider, { value: navigationContext }, /* @__PURE__ */ React3.createElement(LocationContext.Provider, { children, value: locationContext }));
   }
-  var defaultMethod = "get";
-  var defaultEncType = "application/x-www-form-urlencoded";
   function isHtmlElement(object) {
     return object != null && typeof object.tagName === "string";
   }
@@ -24263,7 +23968,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     (!target || target === "_self") && // Let browser handle "target=_blank" etc.
     !isModifiedEvent(event);
   }
-  var _formDataSupportsSubmitter = null;
   function isFormDataSubmitterSupported() {
     if (_formDataSupportsSubmitter === null) {
       try {
@@ -24279,11 +23983,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return _formDataSupportsSubmitter;
   }
-  var supportedFormEncTypes = /* @__PURE__ */ new Set([
-    "application/x-www-form-urlencoded",
-    "multipart/form-data",
-    "text/plain"
-  ]);
   function getFormEncType(encType) {
     if (encType != null && !supportedFormEncTypes.has(encType)) {
       warning(
@@ -24500,9 +24199,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       return deduped;
     }, []);
   }
-  var objectProtoNames = Object.getOwnPropertyNames(Object.prototype).sort().join("\0");
-  var SingleFetchRedirectSymbol = Symbol("SingleFetchRedirect");
-  var NO_BODY_STATUS_CODES = /* @__PURE__ */ new Set([100, 101, 204, 205]);
   function singleFetchUrl(reqUrl, basename) {
     let url = typeof reqUrl === "string" ? new URL(
       reqUrl,
@@ -24535,8 +24231,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     );
     return context;
   }
-  var FrameworkContext = React9.createContext(void 0);
-  FrameworkContext.displayName = "FrameworkContext";
   function useFrameworkContext() {
     let context = React9.useContext(FrameworkContext);
     invariant2(
@@ -24736,13 +24430,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       });
     };
   }
-  var isBrowser = typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined";
-  try {
-    if (isBrowser) {
-      window.__reactRouterVersion = "7.6.2";
-    }
-  } catch (e) {
-  }
   function createBrowserRouter(routes, opts) {
     return createRouter({
       basename: opts?.basename,
@@ -24830,203 +24517,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       }
     );
   }
-  HistoryRouter.displayName = "unstable_HistoryRouter";
-  var ABSOLUTE_URL_REGEX2 = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
-  var Link = React10.forwardRef(
-    function LinkWithRef({
-      onClick,
-      discover = "render",
-      prefetch = "none",
-      relative,
-      reloadDocument,
-      replace: replace2,
-      state,
-      target,
-      to,
-      preventScrollReset,
-      viewTransition,
-      ...rest
-    }, forwardedRef) {
-      let { basename } = React10.useContext(NavigationContext);
-      let isAbsolute = typeof to === "string" && ABSOLUTE_URL_REGEX2.test(to);
-      let absoluteHref;
-      let isExternal = false;
-      if (typeof to === "string" && isAbsolute) {
-        absoluteHref = to;
-        if (isBrowser) {
-          try {
-            let currentUrl = new URL(window.location.href);
-            let targetUrl = to.startsWith("//") ? new URL(currentUrl.protocol + to) : new URL(to);
-            let path = stripBasename(targetUrl.pathname, basename);
-            if (targetUrl.origin === currentUrl.origin && path != null) {
-              to = path + targetUrl.search + targetUrl.hash;
-            } else {
-              isExternal = true;
-            }
-          } catch (e) {
-            warning(
-              false,
-              `<Link to="${to}"> contains an invalid URL which will probably break when clicked - please update to a valid URL path.`
-            );
-          }
-        }
-      }
-      let href2 = useHref(to, { relative });
-      let [shouldPrefetch, prefetchRef, prefetchHandlers] = usePrefetchBehavior(
-        prefetch,
-        rest
-      );
-      let internalOnClick = useLinkClickHandler(to, {
-        replace: replace2,
-        state,
-        target,
-        preventScrollReset,
-        relative,
-        viewTransition
-      });
-      function handleClick(event) {
-        if (onClick) onClick(event);
-        if (!event.defaultPrevented) {
-          internalOnClick(event);
-        }
-      }
-      let link = (
-        // eslint-disable-next-line jsx-a11y/anchor-has-content
-        /* @__PURE__ */ React10.createElement(
-          "a",
-          {
-            ...rest,
-            ...prefetchHandlers,
-            href: absoluteHref || href2,
-            onClick: isExternal || reloadDocument ? onClick : handleClick,
-            ref: mergeRefs(forwardedRef, prefetchRef),
-            target,
-            "data-discover": !isAbsolute && discover === "render" ? "true" : void 0
-          }
-        )
-      );
-      return shouldPrefetch && !isAbsolute ? /* @__PURE__ */ React10.createElement(React10.Fragment, null, link, /* @__PURE__ */ React10.createElement(PrefetchPageLinks, { page: href2 })) : link;
-    }
-  );
-  Link.displayName = "Link";
-  var NavLink = React10.forwardRef(
-    function NavLinkWithRef({
-      "aria-current": ariaCurrentProp = "page",
-      caseSensitive = false,
-      className: classNameProp = "",
-      end = false,
-      style: styleProp,
-      to,
-      viewTransition,
-      children,
-      ...rest
-    }, ref) {
-      let path = useResolvedPath(to, { relative: rest.relative });
-      let location = useLocation();
-      let routerState = React10.useContext(DataRouterStateContext);
-      let { navigator: navigator2, basename } = React10.useContext(NavigationContext);
-      let isTransitioning = routerState != null && // Conditional usage is OK here because the usage of a data router is static
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      useViewTransitionState(path) && viewTransition === true;
-      let toPathname = navigator2.encodeLocation ? navigator2.encodeLocation(path).pathname : path.pathname;
-      let locationPathname = location.pathname;
-      let nextLocationPathname = routerState && routerState.navigation && routerState.navigation.location ? routerState.navigation.location.pathname : null;
-      if (!caseSensitive) {
-        locationPathname = locationPathname.toLowerCase();
-        nextLocationPathname = nextLocationPathname ? nextLocationPathname.toLowerCase() : null;
-        toPathname = toPathname.toLowerCase();
-      }
-      if (nextLocationPathname && basename) {
-        nextLocationPathname = stripBasename(nextLocationPathname, basename) || nextLocationPathname;
-      }
-      const endSlashPosition = toPathname !== "/" && toPathname.endsWith("/") ? toPathname.length - 1 : toPathname.length;
-      let isActive = locationPathname === toPathname || !end && locationPathname.startsWith(toPathname) && locationPathname.charAt(endSlashPosition) === "/";
-      let isPending = nextLocationPathname != null && (nextLocationPathname === toPathname || !end && nextLocationPathname.startsWith(toPathname) && nextLocationPathname.charAt(toPathname.length) === "/");
-      let renderProps = {
-        isActive,
-        isPending,
-        isTransitioning
-      };
-      let ariaCurrent = isActive ? ariaCurrentProp : void 0;
-      let className;
-      if (typeof classNameProp === "function") {
-        className = classNameProp(renderProps);
-      } else {
-        className = [
-          classNameProp,
-          isActive ? "active" : null,
-          isPending ? "pending" : null,
-          isTransitioning ? "transitioning" : null
-        ].filter(Boolean).join(" ");
-      }
-      let style = typeof styleProp === "function" ? styleProp(renderProps) : styleProp;
-      return /* @__PURE__ */ React10.createElement(
-        Link,
-        {
-          ...rest,
-          "aria-current": ariaCurrent,
-          className,
-          ref,
-          style,
-          to,
-          viewTransition
-        },
-        typeof children === "function" ? children(renderProps) : children
-      );
-    }
-  );
-  NavLink.displayName = "NavLink";
-  var Form = React10.forwardRef(
-    ({
-      discover = "render",
-      fetcherKey,
-      navigate,
-      reloadDocument,
-      replace: replace2,
-      state,
-      method = defaultMethod,
-      action,
-      onSubmit,
-      relative,
-      preventScrollReset,
-      viewTransition,
-      ...props
-    }, forwardedRef) => {
-      let submit = useSubmit();
-      let formAction = useFormAction(action, { relative });
-      let formMethod = method.toLowerCase() === "get" ? "get" : "post";
-      let isAbsolute = typeof action === "string" && ABSOLUTE_URL_REGEX2.test(action);
-      let submitHandler = (event) => {
-        onSubmit && onSubmit(event);
-        if (event.defaultPrevented) return;
-        event.preventDefault();
-        let submitter = event.nativeEvent.submitter;
-        let submitMethod = submitter?.getAttribute("formmethod") || method;
-        submit(submitter || event.currentTarget, {
-          fetcherKey,
-          method: submitMethod,
-          navigate,
-          replace: replace2,
-          state,
-          relative,
-          preventScrollReset,
-          viewTransition
-        });
-      };
-      return /* @__PURE__ */ React10.createElement(
-        "form",
-        {
-          ref: forwardedRef,
-          method: formMethod,
-          action: formAction,
-          onSubmit: reloadDocument ? onSubmit : submitHandler,
-          ...props,
-          "data-discover": !isAbsolute && discover === "render" ? "true" : void 0
-        }
-      );
-    }
-  );
-  Form.displayName = "Form";
   function ScrollRestoration({
     getKey,
     storageKey,
@@ -25084,7 +24574,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       }
     );
   }
-  ScrollRestoration.displayName = "ScrollRestoration";
   function getDataRouterConsoleError2(hookName) {
     return `${hookName} must be used within a data router.  See https://reactrouter.com/en/main/routers/picking-a-router.`;
   }
@@ -25137,8 +24626,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       ]
     );
   }
-  var fetcherId = 0;
-  var getUniqueFetcherId = () => `__${String(++fetcherId)}__`;
   function useSubmit() {
     let { router: router2 } = useDataRouterContext3(
       "useSubmit"
@@ -25207,8 +24694,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     }
     return createPath(path);
   }
-  var SCROLL_RESTORATION_STORAGE_KEY = "react-router-scroll-positions";
-  var savedScrollPositions = {};
   function getScrollRestorationKey(location, matches, basename, getKey) {
     let key = null;
     if (getKey) {
@@ -25343,27 +24828,559 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     let nextPath = stripBasename(vtContext.nextLocation.pathname, basename) || vtContext.nextLocation.pathname;
     return matchPath(path.pathname, nextPath) != null || matchPath(path.pathname, currentPath) != null;
   }
-  var SERVER_NO_BODY_STATUS_CODES = /* @__PURE__ */ new Set([
-    ...NO_BODY_STATUS_CODES,
-    304
-  ]);
+  var React3, React, React2, React10, React9, React4, React8, React7, React5, React6, React11, React12, React13, import_cookie, import_meta, __typeError, __accessCheck, __privateGet, __privateAdd, PopStateEventType, _map, unstable_RouterContextProvider, unsupportedLazyRouteObjectKeys, unsupportedLazyRouteFunctionKeys, paramRe, dynamicSegmentValue, indexRouteValue, emptySegmentValue, staticSegmentValue, splatPenalty, isSplat, joinPaths, normalizePathname, normalizeSearch, normalizeHash, ErrorResponseImpl, validMutationMethodsArr, validMutationMethods, validRequestMethodsArr, validRequestMethods, redirectStatusCodes, redirectPreserveMethodStatusCodes, IDLE_NAVIGATION, IDLE_FETCHER, IDLE_BLOCKER, ABSOLUTE_URL_REGEX, defaultMapRouteProperties, TRANSITIONS_STORAGE_KEY, ResetLoaderDataSymbol, lazyRoutePropertyCache, loadLazyRouteProperty, lazyRouteFunctionCache, DataRouterContext, DataRouterStateContext, ViewTransitionContext, FetchersContext, AwaitContext, NavigationContext, LocationContext, RouteContext, RouteErrorContext, ENABLE_DEV_WARNINGS, navigateEffectWarning, OutletContext, defaultErrorElement, RenderErrorBoundary, alreadyWarned, alreadyWarned2, hydrationRouteProperties, Deferred, MemoizedDataRoutes, defaultMethod, defaultEncType, _formDataSupportsSubmitter, supportedFormEncTypes, objectProtoNames, SingleFetchRedirectSymbol, NO_BODY_STATUS_CODES, FrameworkContext, isBrowser, ABSOLUTE_URL_REGEX2, Link, NavLink, Form, fetcherId, getUniqueFetcherId, SCROLL_RESTORATION_STORAGE_KEY, savedScrollPositions, SERVER_NO_BODY_STATUS_CODES;
+  var init_chunk_NL6KNZEE = __esm({
+    "node_modules/react-router/dist/development/chunk-NL6KNZEE.mjs"() {
+      React3 = __toESM(require_react(), 1);
+      React = __toESM(require_react(), 1);
+      React2 = __toESM(require_react(), 1);
+      React10 = __toESM(require_react(), 1);
+      React9 = __toESM(require_react(), 1);
+      React4 = __toESM(require_react(), 1);
+      React8 = __toESM(require_react(), 1);
+      React7 = __toESM(require_react(), 1);
+      React5 = __toESM(require_react(), 1);
+      React6 = __toESM(require_react(), 1);
+      React11 = __toESM(require_react(), 1);
+      React12 = __toESM(require_react(), 1);
+      React13 = __toESM(require_react(), 1);
+      import_cookie = __toESM(require_dist(), 1);
+      import_meta = {};
+      __typeError = (msg) => {
+        throw TypeError(msg);
+      };
+      __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+      __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
+      __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+      PopStateEventType = "popstate";
+      unstable_RouterContextProvider = class {
+        constructor(init) {
+          __privateAdd(this, _map, /* @__PURE__ */ new Map());
+          if (init) {
+            for (let [context, value] of init) {
+              this.set(context, value);
+            }
+          }
+        }
+        get(context) {
+          if (__privateGet(this, _map).has(context)) {
+            return __privateGet(this, _map).get(context);
+          }
+          if (context.defaultValue !== void 0) {
+            return context.defaultValue;
+          }
+          throw new Error("No value found for context");
+        }
+        set(context, value) {
+          __privateGet(this, _map).set(context, value);
+        }
+      };
+      _map = /* @__PURE__ */ new WeakMap();
+      unsupportedLazyRouteObjectKeys = /* @__PURE__ */ new Set([
+        "lazy",
+        "caseSensitive",
+        "path",
+        "id",
+        "index",
+        "children"
+      ]);
+      unsupportedLazyRouteFunctionKeys = /* @__PURE__ */ new Set([
+        "lazy",
+        "caseSensitive",
+        "path",
+        "id",
+        "index",
+        "unstable_middleware",
+        "children"
+      ]);
+      paramRe = /^:[\w-]+$/;
+      dynamicSegmentValue = 3;
+      indexRouteValue = 2;
+      emptySegmentValue = 1;
+      staticSegmentValue = 10;
+      splatPenalty = -2;
+      isSplat = (s) => s === "*";
+      joinPaths = (paths) => paths.join("/").replace(/\/\/+/g, "/");
+      normalizePathname = (pathname) => pathname.replace(/\/+$/, "").replace(/^\/*/, "/");
+      normalizeSearch = (search) => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search;
+      normalizeHash = (hash) => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash;
+      ErrorResponseImpl = class {
+        constructor(status, statusText, data2, internal = false) {
+          this.status = status;
+          this.statusText = statusText || "";
+          this.internal = internal;
+          if (data2 instanceof Error) {
+            this.data = data2.toString();
+            this.error = data2;
+          } else {
+            this.data = data2;
+          }
+        }
+      };
+      validMutationMethodsArr = [
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE"
+      ];
+      validMutationMethods = new Set(
+        validMutationMethodsArr
+      );
+      validRequestMethodsArr = [
+        "GET",
+        ...validMutationMethodsArr
+      ];
+      validRequestMethods = new Set(validRequestMethodsArr);
+      redirectStatusCodes = /* @__PURE__ */ new Set([301, 302, 303, 307, 308]);
+      redirectPreserveMethodStatusCodes = /* @__PURE__ */ new Set([307, 308]);
+      IDLE_NAVIGATION = {
+        state: "idle",
+        location: void 0,
+        formMethod: void 0,
+        formAction: void 0,
+        formEncType: void 0,
+        formData: void 0,
+        json: void 0,
+        text: void 0
+      };
+      IDLE_FETCHER = {
+        state: "idle",
+        data: void 0,
+        formMethod: void 0,
+        formAction: void 0,
+        formEncType: void 0,
+        formData: void 0,
+        json: void 0,
+        text: void 0
+      };
+      IDLE_BLOCKER = {
+        state: "unblocked",
+        proceed: void 0,
+        reset: void 0,
+        location: void 0
+      };
+      ABSOLUTE_URL_REGEX = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
+      defaultMapRouteProperties = (route) => ({
+        hasErrorBoundary: Boolean(route.hasErrorBoundary)
+      });
+      TRANSITIONS_STORAGE_KEY = "remix-router-transitions";
+      ResetLoaderDataSymbol = Symbol("ResetLoaderData");
+      lazyRoutePropertyCache = /* @__PURE__ */ new WeakMap();
+      loadLazyRouteProperty = ({
+        key,
+        route,
+        manifest,
+        mapRouteProperties: mapRouteProperties2
+      }) => {
+        let routeToUpdate = manifest[route.id];
+        invariant(routeToUpdate, "No route found in manifest");
+        if (!routeToUpdate.lazy || typeof routeToUpdate.lazy !== "object") {
+          return;
+        }
+        let lazyFn = routeToUpdate.lazy[key];
+        if (!lazyFn) {
+          return;
+        }
+        let cache = lazyRoutePropertyCache.get(routeToUpdate);
+        if (!cache) {
+          cache = {};
+          lazyRoutePropertyCache.set(routeToUpdate, cache);
+        }
+        let cachedPromise = cache[key];
+        if (cachedPromise) {
+          return cachedPromise;
+        }
+        let propertyPromise = (async () => {
+          let isUnsupported = isUnsupportedLazyRouteObjectKey(key);
+          let staticRouteValue = routeToUpdate[key];
+          let isStaticallyDefined = staticRouteValue !== void 0 && key !== "hasErrorBoundary";
+          if (isUnsupported) {
+            warning(
+              !isUnsupported,
+              "Route property " + key + " is not a supported lazy route property. This property will be ignored."
+            );
+            cache[key] = Promise.resolve();
+          } else if (isStaticallyDefined) {
+            warning(
+              false,
+              `Route "${routeToUpdate.id}" has a static property "${key}" defined. The lazy property will be ignored.`
+            );
+          } else {
+            let value = await lazyFn();
+            if (value != null) {
+              Object.assign(routeToUpdate, { [key]: value });
+              Object.assign(routeToUpdate, mapRouteProperties2(routeToUpdate));
+            }
+          }
+          if (typeof routeToUpdate.lazy === "object") {
+            routeToUpdate.lazy[key] = void 0;
+            if (Object.values(routeToUpdate.lazy).every((value) => value === void 0)) {
+              routeToUpdate.lazy = void 0;
+            }
+          }
+        })();
+        cache[key] = propertyPromise;
+        return propertyPromise;
+      };
+      lazyRouteFunctionCache = /* @__PURE__ */ new WeakMap();
+      DataRouterContext = React.createContext(null);
+      DataRouterContext.displayName = "DataRouter";
+      DataRouterStateContext = React.createContext(null);
+      DataRouterStateContext.displayName = "DataRouterState";
+      ViewTransitionContext = React.createContext({
+        isTransitioning: false
+      });
+      ViewTransitionContext.displayName = "ViewTransition";
+      FetchersContext = React.createContext(
+        /* @__PURE__ */ new Map()
+      );
+      FetchersContext.displayName = "Fetchers";
+      AwaitContext = React.createContext(null);
+      AwaitContext.displayName = "Await";
+      NavigationContext = React.createContext(
+        null
+      );
+      NavigationContext.displayName = "Navigation";
+      LocationContext = React.createContext(
+        null
+      );
+      LocationContext.displayName = "Location";
+      RouteContext = React.createContext({
+        outlet: null,
+        matches: [],
+        isDataRoute: false
+      });
+      RouteContext.displayName = "Route";
+      RouteErrorContext = React.createContext(null);
+      RouteErrorContext.displayName = "RouteError";
+      ENABLE_DEV_WARNINGS = true;
+      navigateEffectWarning = `You should call navigate() in a React.useEffect(), not when your component is first rendered.`;
+      OutletContext = React2.createContext(null);
+      defaultErrorElement = /* @__PURE__ */ React2.createElement(DefaultErrorComponent, null);
+      RenderErrorBoundary = class extends React2.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            location: props.location,
+            revalidation: props.revalidation,
+            error: props.error
+          };
+        }
+        static getDerivedStateFromError(error) {
+          return { error };
+        }
+        static getDerivedStateFromProps(props, state) {
+          if (state.location !== props.location || state.revalidation !== "idle" && props.revalidation === "idle") {
+            return {
+              error: props.error,
+              location: props.location,
+              revalidation: props.revalidation
+            };
+          }
+          return {
+            error: props.error !== void 0 ? props.error : state.error,
+            location: state.location,
+            revalidation: props.revalidation || state.revalidation
+          };
+        }
+        componentDidCatch(error, errorInfo) {
+          console.error(
+            "React Router caught the following error during render",
+            error,
+            errorInfo
+          );
+        }
+        render() {
+          return this.state.error !== void 0 ? /* @__PURE__ */ React2.createElement(RouteContext.Provider, { value: this.props.routeContext }, /* @__PURE__ */ React2.createElement(
+            RouteErrorContext.Provider,
+            {
+              value: this.state.error,
+              children: this.props.component
+            }
+          )) : this.props.children;
+        }
+      };
+      alreadyWarned = {};
+      alreadyWarned2 = {};
+      hydrationRouteProperties = [
+        "HydrateFallback",
+        "hydrateFallbackElement"
+      ];
+      Deferred = class {
+        constructor() {
+          this.status = "pending";
+          this.promise = new Promise((resolve, reject) => {
+            this.resolve = (value) => {
+              if (this.status === "pending") {
+                this.status = "resolved";
+                resolve(value);
+              }
+            };
+            this.reject = (reason) => {
+              if (this.status === "pending") {
+                this.status = "rejected";
+                reject(reason);
+              }
+            };
+          });
+        }
+      };
+      MemoizedDataRoutes = React3.memo(DataRoutes);
+      defaultMethod = "get";
+      defaultEncType = "application/x-www-form-urlencoded";
+      _formDataSupportsSubmitter = null;
+      supportedFormEncTypes = /* @__PURE__ */ new Set([
+        "application/x-www-form-urlencoded",
+        "multipart/form-data",
+        "text/plain"
+      ]);
+      objectProtoNames = Object.getOwnPropertyNames(Object.prototype).sort().join("\0");
+      SingleFetchRedirectSymbol = Symbol("SingleFetchRedirect");
+      NO_BODY_STATUS_CODES = /* @__PURE__ */ new Set([100, 101, 204, 205]);
+      FrameworkContext = React9.createContext(void 0);
+      FrameworkContext.displayName = "FrameworkContext";
+      isBrowser = typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined";
+      try {
+        if (isBrowser) {
+          window.__reactRouterVersion = "7.6.2";
+        }
+      } catch (e) {
+      }
+      HistoryRouter.displayName = "unstable_HistoryRouter";
+      ABSOLUTE_URL_REGEX2 = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i;
+      Link = React10.forwardRef(
+        function LinkWithRef({
+          onClick,
+          discover = "render",
+          prefetch = "none",
+          relative,
+          reloadDocument,
+          replace: replace2,
+          state,
+          target,
+          to,
+          preventScrollReset,
+          viewTransition,
+          ...rest
+        }, forwardedRef) {
+          let { basename } = React10.useContext(NavigationContext);
+          let isAbsolute = typeof to === "string" && ABSOLUTE_URL_REGEX2.test(to);
+          let absoluteHref;
+          let isExternal = false;
+          if (typeof to === "string" && isAbsolute) {
+            absoluteHref = to;
+            if (isBrowser) {
+              try {
+                let currentUrl = new URL(window.location.href);
+                let targetUrl = to.startsWith("//") ? new URL(currentUrl.protocol + to) : new URL(to);
+                let path = stripBasename(targetUrl.pathname, basename);
+                if (targetUrl.origin === currentUrl.origin && path != null) {
+                  to = path + targetUrl.search + targetUrl.hash;
+                } else {
+                  isExternal = true;
+                }
+              } catch (e) {
+                warning(
+                  false,
+                  `<Link to="${to}"> contains an invalid URL which will probably break when clicked - please update to a valid URL path.`
+                );
+              }
+            }
+          }
+          let href2 = useHref(to, { relative });
+          let [shouldPrefetch, prefetchRef, prefetchHandlers] = usePrefetchBehavior(
+            prefetch,
+            rest
+          );
+          let internalOnClick = useLinkClickHandler(to, {
+            replace: replace2,
+            state,
+            target,
+            preventScrollReset,
+            relative,
+            viewTransition
+          });
+          function handleClick(event) {
+            if (onClick) onClick(event);
+            if (!event.defaultPrevented) {
+              internalOnClick(event);
+            }
+          }
+          let link = (
+            // eslint-disable-next-line jsx-a11y/anchor-has-content
+            /* @__PURE__ */ React10.createElement(
+              "a",
+              {
+                ...rest,
+                ...prefetchHandlers,
+                href: absoluteHref || href2,
+                onClick: isExternal || reloadDocument ? onClick : handleClick,
+                ref: mergeRefs(forwardedRef, prefetchRef),
+                target,
+                "data-discover": !isAbsolute && discover === "render" ? "true" : void 0
+              }
+            )
+          );
+          return shouldPrefetch && !isAbsolute ? /* @__PURE__ */ React10.createElement(React10.Fragment, null, link, /* @__PURE__ */ React10.createElement(PrefetchPageLinks, { page: href2 })) : link;
+        }
+      );
+      Link.displayName = "Link";
+      NavLink = React10.forwardRef(
+        function NavLinkWithRef({
+          "aria-current": ariaCurrentProp = "page",
+          caseSensitive = false,
+          className: classNameProp = "",
+          end = false,
+          style: styleProp,
+          to,
+          viewTransition,
+          children,
+          ...rest
+        }, ref) {
+          let path = useResolvedPath(to, { relative: rest.relative });
+          let location = useLocation();
+          let routerState = React10.useContext(DataRouterStateContext);
+          let { navigator: navigator2, basename } = React10.useContext(NavigationContext);
+          let isTransitioning = routerState != null && // Conditional usage is OK here because the usage of a data router is static
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          useViewTransitionState(path) && viewTransition === true;
+          let toPathname = navigator2.encodeLocation ? navigator2.encodeLocation(path).pathname : path.pathname;
+          let locationPathname = location.pathname;
+          let nextLocationPathname = routerState && routerState.navigation && routerState.navigation.location ? routerState.navigation.location.pathname : null;
+          if (!caseSensitive) {
+            locationPathname = locationPathname.toLowerCase();
+            nextLocationPathname = nextLocationPathname ? nextLocationPathname.toLowerCase() : null;
+            toPathname = toPathname.toLowerCase();
+          }
+          if (nextLocationPathname && basename) {
+            nextLocationPathname = stripBasename(nextLocationPathname, basename) || nextLocationPathname;
+          }
+          const endSlashPosition = toPathname !== "/" && toPathname.endsWith("/") ? toPathname.length - 1 : toPathname.length;
+          let isActive = locationPathname === toPathname || !end && locationPathname.startsWith(toPathname) && locationPathname.charAt(endSlashPosition) === "/";
+          let isPending = nextLocationPathname != null && (nextLocationPathname === toPathname || !end && nextLocationPathname.startsWith(toPathname) && nextLocationPathname.charAt(toPathname.length) === "/");
+          let renderProps = {
+            isActive,
+            isPending,
+            isTransitioning
+          };
+          let ariaCurrent = isActive ? ariaCurrentProp : void 0;
+          let className;
+          if (typeof classNameProp === "function") {
+            className = classNameProp(renderProps);
+          } else {
+            className = [
+              classNameProp,
+              isActive ? "active" : null,
+              isPending ? "pending" : null,
+              isTransitioning ? "transitioning" : null
+            ].filter(Boolean).join(" ");
+          }
+          let style = typeof styleProp === "function" ? styleProp(renderProps) : styleProp;
+          return /* @__PURE__ */ React10.createElement(
+            Link,
+            {
+              ...rest,
+              "aria-current": ariaCurrent,
+              className,
+              ref,
+              style,
+              to,
+              viewTransition
+            },
+            typeof children === "function" ? children(renderProps) : children
+          );
+        }
+      );
+      NavLink.displayName = "NavLink";
+      Form = React10.forwardRef(
+        ({
+          discover = "render",
+          fetcherKey,
+          navigate,
+          reloadDocument,
+          replace: replace2,
+          state,
+          method = defaultMethod,
+          action,
+          onSubmit,
+          relative,
+          preventScrollReset,
+          viewTransition,
+          ...props
+        }, forwardedRef) => {
+          let submit = useSubmit();
+          let formAction = useFormAction(action, { relative });
+          let formMethod = method.toLowerCase() === "get" ? "get" : "post";
+          let isAbsolute = typeof action === "string" && ABSOLUTE_URL_REGEX2.test(action);
+          let submitHandler = (event) => {
+            onSubmit && onSubmit(event);
+            if (event.defaultPrevented) return;
+            event.preventDefault();
+            let submitter = event.nativeEvent.submitter;
+            let submitMethod = submitter?.getAttribute("formmethod") || method;
+            submit(submitter || event.currentTarget, {
+              fetcherKey,
+              method: submitMethod,
+              navigate,
+              replace: replace2,
+              state,
+              relative,
+              preventScrollReset,
+              viewTransition
+            });
+          };
+          return /* @__PURE__ */ React10.createElement(
+            "form",
+            {
+              ref: forwardedRef,
+              method: formMethod,
+              action: formAction,
+              onSubmit: reloadDocument ? onSubmit : submitHandler,
+              ...props,
+              "data-discover": !isAbsolute && discover === "render" ? "true" : void 0
+            }
+          );
+        }
+      );
+      Form.displayName = "Form";
+      ScrollRestoration.displayName = "ScrollRestoration";
+      fetcherId = 0;
+      getUniqueFetcherId = () => `__${String(++fetcherId)}__`;
+      SCROLL_RESTORATION_STORAGE_KEY = "react-router-scroll-positions";
+      savedScrollPositions = {};
+      SERVER_NO_BODY_STATUS_CODES = /* @__PURE__ */ new Set([
+        ...NO_BODY_STATUS_CODES,
+        304
+      ]);
+    }
+  });
 
-  // src/router/router.jsx
-  var import_react9 = __toESM(require_react());
-
-  // src/pages/login/login.jsx
-  var import_react = __toESM(require_react());
+  // node_modules/react-router/dist/development/index.mjs
+  var init_development = __esm({
+    "node_modules/react-router/dist/development/index.mjs"() {
+      init_chunk_NL6KNZEE();
+    }
+  });
 
   // src/pages/login/login.module.css
-  var login_default = {
-    loginContainer: "login_loginContainer",
-    loginForm: "login_loginForm",
-    loginTitle: "login_loginTitle",
-    input: "login_input",
-    loginButton: "login_loginButton"
-  };
+  var login_default;
+  var init_login = __esm({
+    "src/pages/login/login.module.css"() {
+      login_default = {
+        loginContainer: "login_loginContainer",
+        loginForm: "login_loginForm",
+        loginTitle: "login_loginTitle",
+        input: "login_input",
+        loginButton: "login_loginButton"
+      };
+    }
+  });
 
   // src/pages/login/login.jsx
+  var login_exports = {};
+  __export(login_exports, {
+    default: () => Login
+  });
   function Login() {
     const [username, setUsername] = (0, import_react.useState)("");
     const [password, setPassword] = (0, import_react.useState)("");
@@ -25396,31 +25413,43 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       }
     ), /* @__PURE__ */ import_react.default.createElement("button", { className: login_default.loginButton, type: "submit" }, "Sign in")));
   }
-
-  // src/pages/todo/todo.jsx
-  var import_react5 = __toESM(require_react());
+  var import_react;
+  var init_login2 = __esm({
+    "src/pages/login/login.jsx"() {
+      import_react = __toESM(require_react());
+      init_development();
+      init_login();
+    }
+  });
 
   // src/pages/todo/todo.module.css
-  var todo_default = {
-    todoBg: "todo_todoBg",
-    todoContainer: "todo_todoContainer",
-    todoList: "todo_todoList",
-    todoItem: "todo_todoItem",
-    todoText: "todo_todoText",
-    todoDone: "todo_todoDone",
-    todoButtons: "todo_todoButtons",
-    addRow: "todo_addRow"
-  };
-
-  // src/components/Button/Button.jsx
-  var import_react2 = __toESM(require_react());
+  var todo_default;
+  var init_todo = __esm({
+    "src/pages/todo/todo.module.css"() {
+      todo_default = {
+        todoBg: "todo_todoBg",
+        todoContainer: "todo_todoContainer",
+        todoList: "todo_todoList",
+        todoItem: "todo_todoItem",
+        todoText: "todo_todoText",
+        todoDone: "todo_todoDone",
+        todoButtons: "todo_todoButtons",
+        addRow: "todo_addRow"
+      };
+    }
+  });
 
   // src/components/Button/Button.module.css
-  var Button_default = {
-    button: "Button_button",
-    iconButton: "Button_iconButton",
-    icon: "Button_icon"
-  };
+  var Button_default;
+  var init_Button = __esm({
+    "src/components/Button/Button.module.css"() {
+      Button_default = {
+        button: "Button_button",
+        iconButton: "Button_iconButton",
+        icon: "Button_icon"
+      };
+    }
+  });
 
   // src/components/Button/Button.jsx
   function Button({
@@ -25441,14 +25470,23 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       children
     );
   }
-
-  // src/components/Input/Input.jsx
-  var import_react3 = __toESM(require_react());
+  var import_react2;
+  var init_Button2 = __esm({
+    "src/components/Button/Button.jsx"() {
+      import_react2 = __toESM(require_react());
+      init_Button();
+    }
+  });
 
   // src/components/Input/Input.module.css
-  var Input_default = {
-    input: "Input_input"
-  };
+  var Input_default;
+  var init_Input = __esm({
+    "src/components/Input/Input.module.css"() {
+      Input_default = {
+        input: "Input_input"
+      };
+    }
+  });
 
   // src/components/Input/Input.jsx
   function Input({
@@ -25463,14 +25501,23 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       }
     );
   }
-
-  // src/components/Row/Row.jsx
-  var import_react4 = __toESM(require_react());
+  var import_react3;
+  var init_Input2 = __esm({
+    "src/components/Input/Input.jsx"() {
+      import_react3 = __toESM(require_react());
+      init_Input();
+    }
+  });
 
   // src/components/Row/Row.module.css
-  var Row_default = {
-    row: "Row_row"
-  };
+  var Row_default;
+  var init_Row = __esm({
+    "src/components/Row/Row.module.css"() {
+      Row_default = {
+        row: "Row_row"
+      };
+    }
+  });
 
   // src/components/Row/Row.jsx
   function Row({
@@ -25489,8 +25536,19 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       children
     );
   }
+  var import_react4;
+  var init_Row2 = __esm({
+    "src/components/Row/Row.jsx"() {
+      import_react4 = __toESM(require_react());
+      init_Row();
+    }
+  });
 
   // src/pages/todo/todo.jsx
+  var todo_exports = {};
+  __export(todo_exports, {
+    default: () => Todo
+  });
   function Todo() {
     const [todos, setTodos] = (0, import_react5.useState)([]);
     const [input, setInput] = (0, import_react5.useState)("");
@@ -25542,20 +25600,36 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       }
     )))))));
   }
-
-  // src/pages/image/image.jsx
-  var import_react6 = __toESM(require_react());
+  var import_react5;
+  var init_todo2 = __esm({
+    "src/pages/todo/todo.jsx"() {
+      import_react5 = __toESM(require_react());
+      init_todo();
+      init_Button2();
+      init_Input2();
+      init_Row2();
+    }
+  });
 
   // src/pages/image/image.module.css
-  var image_default = {
-    imageBg: "image_imageBg",
-    imageContainer: "image_imageContainer",
-    imageTitle: "image_imageTitle",
-    imagePreview: "image_imagePreview",
-    imageDesc: "image_imageDesc"
-  };
+  var image_default;
+  var init_image = __esm({
+    "src/pages/image/image.module.css"() {
+      image_default = {
+        imageBg: "image_imageBg",
+        imageContainer: "image_imageContainer",
+        imageTitle: "image_imageTitle",
+        imagePreview: "image_imagePreview",
+        imageDesc: "image_imageDesc"
+      };
+    }
+  });
 
   // src/pages/image/image.jsx
+  var image_exports = {};
+  __export(image_exports, {
+    default: () => Image
+  });
   function Image() {
     return /* @__PURE__ */ import_react6.default.createElement("div", { className: image_default.imageBg }, /* @__PURE__ */ import_react6.default.createElement("div", { className: image_default.imageContainer }, /* @__PURE__ */ import_react6.default.createElement("h1", { className: image_default.imageTitle }, "Imagen destacada"), /* @__PURE__ */ import_react6.default.createElement(
       "img",
@@ -25566,19 +25640,25 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       }
     ), /* @__PURE__ */ import_react6.default.createElement("p", { className: image_default.imageDesc }, "Un hermoso paisaje de monta\xF1a al atardecer, ejemplo de Unsplash.")));
   }
-
-  // src/layouts/Layout.jsx
-  var import_react8 = __toESM(require_react());
-
-  // src/components/Header/Header.jsx
-  var import_react7 = __toESM(require_react());
+  var import_react6;
+  var init_image2 = __esm({
+    "src/pages/image/image.jsx"() {
+      import_react6 = __toESM(require_react());
+      init_image();
+    }
+  });
 
   // src/components/Header/Header.module.css
-  var Header_default = {
-    header: "Header_header",
-    nav: "Header_nav",
-    link: "Header_link"
-  };
+  var Header_default;
+  var init_Header = __esm({
+    "src/components/Header/Header.module.css"() {
+      Header_default = {
+        header: "Header_header",
+        nav: "Header_nav",
+        link: "Header_link"
+      };
+    }
+  });
 
   // src/components/Header/Header.jsx
   function Header({ links: links2 = [] }) {
@@ -25592,20 +25672,56 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       link.label
     ))));
   }
+  var import_react7;
+  var init_Header2 = __esm({
+    "src/components/Header/Header.jsx"() {
+      import_react7 = __toESM(require_react());
+      init_Header();
+    }
+  });
 
   // src/layouts/layout.module.css
-  var layout_default = {
-    root: "layout_root",
-    layoutRoot: "layout_layoutRoot",
-    main: "layout_main"
-  };
+  var layout_default;
+  var init_layout = __esm({
+    "src/layouts/layout.module.css"() {
+      layout_default = {
+        root: "layout_root",
+        layoutRoot: "layout_layoutRoot",
+        main: "layout_main"
+      };
+    }
+  });
 
   // src/layouts/Layout.jsx
+  var Layout_exports = {};
+  __export(Layout_exports, {
+    default: () => Layout
+  });
   function Layout({ links: links2 }) {
     return /* @__PURE__ */ import_react8.default.createElement("div", { className: layout_default.layoutRoot }, /* @__PURE__ */ import_react8.default.createElement(Header, { links: links2 }), /* @__PURE__ */ import_react8.default.createElement("main", { className: layout_default.main }, /* @__PURE__ */ import_react8.default.createElement(Outlet, null)));
   }
+  var import_react8;
+  var init_Layout = __esm({
+    "src/layouts/Layout.jsx"() {
+      import_react8 = __toESM(require_react());
+      init_Header2();
+      init_development();
+      init_layout();
+    }
+  });
+
+  // main.jsx
+  var import_react10 = __toESM(require_react());
+  var import_client = __toESM(require_client());
+  init_development();
 
   // src/router/router.jsx
+  var import_react9 = __toESM(require_react());
+  init_development();
+  var Login2 = (0, import_react9.lazy)(() => Promise.resolve().then(() => (init_login2(), login_exports)));
+  var Todo2 = (0, import_react9.lazy)(() => Promise.resolve().then(() => (init_todo2(), todo_exports)));
+  var Image2 = (0, import_react9.lazy)(() => Promise.resolve().then(() => (init_image2(), image_exports)));
+  var Layout2 = (0, import_react9.lazy)(() => Promise.resolve().then(() => (init_Layout(), Layout_exports)));
   var links = [
     { url: "/todo", label: "Todo" },
     { url: "/image", label: "Imagen" },
@@ -25614,14 +25730,20 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   var router = createBrowserRouter([
     {
       path: "/",
-      element: /* @__PURE__ */ import_react9.default.createElement(Login, null)
+      element: /* @__PURE__ */ import_react9.default.createElement(import_react9.Suspense, { fallback: /* @__PURE__ */ import_react9.default.createElement("div", null, "cargando...") }, /* @__PURE__ */ import_react9.default.createElement(Login2, null))
     },
     {
       path: "/",
-      element: /* @__PURE__ */ import_react9.default.createElement(Layout, { links }),
+      element: /* @__PURE__ */ import_react9.default.createElement(import_react9.Suspense, { fallback: /* @__PURE__ */ import_react9.default.createElement("div", null, "cargando...") }, /* @__PURE__ */ import_react9.default.createElement(Layout2, { links })),
       children: [
-        { path: "todo", element: /* @__PURE__ */ import_react9.default.createElement(Todo, null) },
-        { path: "image", element: /* @__PURE__ */ import_react9.default.createElement(Image, null) }
+        {
+          path: "todo",
+          element: /* @__PURE__ */ import_react9.default.createElement(import_react9.Suspense, { fallback: /* @__PURE__ */ import_react9.default.createElement("div", null, "cargando...") }, /* @__PURE__ */ import_react9.default.createElement(Todo2, null))
+        },
+        {
+          path: "image",
+          element: /* @__PURE__ */ import_react9.default.createElement(import_react9.Suspense, { fallback: /* @__PURE__ */ import_react9.default.createElement("div", null, "cargando...") }, /* @__PURE__ */ import_react9.default.createElement(Image2, null))
+        }
       ]
     }
   ]);
