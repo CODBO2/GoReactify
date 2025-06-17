@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  color: #c9d1d9;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.link:hover, .link:focus {
+  background: #21262d;
+  color: #58a6ff;
+  outline: none;
+} 
