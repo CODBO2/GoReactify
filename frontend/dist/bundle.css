@@ -322,4 +322,107 @@ body,
     padding: 0 0.5rem 1.5rem 0.5rem;
   }
 }
+
+/* src/pages/notFound/notFound.module.css */
+.notFound_notFoundContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d1117;
+  padding: 20px;
+}
+.notFound_notFoundContent {
+  text-align: center;
+  background: #161b22;
+  padding: 60px 40px;
+  border-radius: 6px;
+  border: 1px solid #30363d;
+  box-shadow: 0 8px 24px rgba(1, 4, 9, 0.3);
+  max-width: 500px;
+  width: 100%;
+}
+.notFound_errorCode {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #f78166;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(247, 129, 102, 0.3);
+}
+.notFound_errorTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f0f6fc;
+  margin: 20px 0 15px 0;
+}
+.notFound_errorMessage {
+  font-size: 1.1rem;
+  color: #8b949e;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+.notFound_buttonContainer {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.notFound_backButton {
+  background: #21262d;
+  color: #f0f6fc;
+  border: 1px solid #30363d;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.notFound_backButton:hover {
+  background: #30363d;
+  border-color: #8b949e;
+  transform: translateY(-1px);
+}
+.notFound_backButton:active {
+  background: #1f6feb;
+  border-color: #1f6feb;
+}
+.notFound_homeButton {
+  background: #238636;
+  color: #ffffff;
+  border: 1px solid #238636;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.notFound_homeButton:hover {
+  background: #2ea043;
+  border-color: #2ea043;
+  transform: translateY(-1px);
+}
+.notFound_homeButton:active {
+  background: #238636;
+  border-color: #238636;
+}
+@media (max-width: 768px) {
+  .notFound_notFoundContent {
+    padding: 40px 20px;
+  }
+  .notFound_errorCode {
+    font-size: 6rem;
+  }
+  .notFound_errorTitle {
+    font-size: 1.5rem;
+  }
+  .notFound_buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .notFound_backButton,
+  .notFound_homeButton {
+    width: 200px;
+  }
+}
 /*# sourceMappingURL=bundle.css.map */

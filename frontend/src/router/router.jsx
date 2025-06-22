@@ -1,14 +1,21 @@
 // React
-import React, { Suspense, lazy } from "react";
+import React from "react";
+
+// Utils
+import { authorization } from "../utils/authorization";
+
+// Loaders
+import { loaderLogin } from "../pages/login/loader.login";
 
 // React Router
 import { createBrowserRouter } from "react-router";
 
 // Pages
-const Login = lazy(() => import("../pages/login/login"));
-const Todo = lazy(() => import("../pages/todo/todo"));
-const Image = lazy(() => import("../pages/image/image"));
-const Layout = lazy(() => import("../layouts/Layout"));
+import Login from "../pages/login/login";
+import Todo from "../pages/todo/todo";
+import Image from "../pages/image/image";
+import Layout from "../layouts/Layout";
+import NotFound from "../pages/notFound/notFound";
 
 const links = [
   { url: "/todo", label: "Todo" },
@@ -20,37 +27,28 @@ const links = [
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <Suspense fallback={<div>cargando...</div>}>
-        <Login />
-      </Suspense>
-    )
+    element: <Login />,
+    loader: loaderLogin
   },
   {
     path: "/",
-    element: (
-      <Suspense fallback={<div>cargando...</div>}>
-        <Layout links={links} />
-      </Suspense>
-    ),
+    element: <Layout links={links} />,
     children: [
       {
         path: "todo",
-        element: (
-          <Suspense fallback={<div>cargando...</div>}>
-            <Todo />
-          </Suspense>
-        )
+        element: <Todo />,
+        loader: authorization,
       },
       {
         path: "image",
-        element: (
-          <Suspense fallback={<div>cargando...</div>}>
-            <Image />
-          </Suspense>
-        )
+        element: <Image />,
+        loader: authorization
       }
-    ]
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFound />
   }
 ]);
 

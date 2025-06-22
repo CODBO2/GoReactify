@@ -1,20 +1,24 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	controller "GoReactify/controllers"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	router := gin.Default()
+	var server *gin.Engine = gin.Default()
 
-	router.Static("/frontend", "../frontend/dist")
-	router.LoadHTMLGlob("../frontend/dist/index.html")
+	// API
+	server.POST("/api/login", controller.Login)
+	server.GET("/api/auth", controller.Auth)
 
-	router.GET("/", func(c *gin.Context) {
+	// Renderiza la página web.
+	server.Static("/frontend", "../frontend/dist")
+	server.LoadHTMLGlob("../frontend/dist/*.html")
+	server.NoRoute(func(c *gin.Context) {
 		c.HTML(200, "index.html", nil)
 	})
 
-	router.NoRoute(func(c *gin.Context) {
-		c.HTML(200, "index.html", nil)
-	})
-
-	router.Run(":8080")
+	server.Run(":8080")
 }

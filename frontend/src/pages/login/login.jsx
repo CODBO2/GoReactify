@@ -9,11 +9,32 @@ export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí iría la lógica de autenticación
-        navigate("/todo");
+        
+        // Extrae el token del localStorage.
+        try {
+            const response = await fetch("http://localhost:8080/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: username, password: password })
+            });
+
+            const data = await response.json();
+
+            if (data.auth) {
+                localStorage.setItem("token", data.token);
+                navigate("/todo");
+            }
+        } catch (error) {
+            console.log(error)
+            console.log("Error al iniciar sesión.")
+        }
     };
+
     return (
         <div className={styles.loginContainer}>
             <form className={styles.loginForm} onSubmit={handleSubmit}>
